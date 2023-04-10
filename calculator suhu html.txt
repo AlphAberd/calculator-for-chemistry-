@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Kalkulator Suhu Kimia</title>
+</head>
+<body>
+	<h2>Kalkulator Suhu Kimia</h2>
+	<form>
+		<p>Pilih jenis konversi suhu:</p>
+		<select id="conversion">
+			<option value="cel_to_fahr">Celcius ke Fahrenheit</option>
+			<option value="fahr_to_cel">Fahrenheit ke Celcius</option>
+			<option value="cel_to_kel">Celcius ke Kelvin</option>
+			<option value="kel_to_cel">Kelvin ke Celcius</option>
+			<option value="fahr_to_kel">Fahrenheit ke Kelvin</option>
+			<option value="kel_to_fahr">Kelvin ke Fahrenheit</option>
+		</select>
+		<br><br>
+		<label for="temp">Masukkan suhu:</label>
+		<input type="number" id="temp" name="temp"><br><br>
+		<button type="button" onclick="calculate()">Hitung</button>
+		<br><br>
+		<label for="result">Hasil:</label>
+		<input type="text" id="result" name="result" readonly>
+	</form>
+	<script>
+		function calculate() {
+			// mengambil nilai dari input suhu
+			var temp = parseFloat(document.getElementById("temp").value);
+
+			// mengambil nilai dari pilihan konversi suhu
+			var conversion = document.getElementById("conversion").value;
+
+			// melakukan konversi suhu berdasarkan pilihan yang dipilih
+			switch (conversion) {
+				case "cel_to_fahr":
+					var result = temp * 1.8 + 32;
+					break;
+				case "fahr_to_cel":
+					var result = (temp - 32) / 1.8;
+					break;
+				case "cel_to_kel":
+					var result = temp + 273.15;
+					break;
+				case "kel_to_cel":
+					var result = temp - 273.15;
+					break;
+				case "fahr_to_kel":
+					var result = (temp + 459.67) * 5 / 9;
+					break;
+				case "kel_to_fahr":
+					var result = temp * 9 / 5 - 459.67;
+					break;
+			}
+
+			// menampilkan hasil konversi suhu pada input hasil
+			document.getElementById("result").value = result;
+		}
+	</script>
+</body>
+</html>
